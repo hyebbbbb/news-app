@@ -1,0 +1,28 @@
+<body>
+    <div></div>
+  
+    <script>
+      const div = document.querySelector('div');
+  
+      function getData1() {
+        const data = fetch('http://ggoreb.com/api/lotto.jsp?drwNo=1');
+        data.then((res) => res.json()).then((res) => {
+          for(let key in res) {
+            div.innerHTML += `<p>${res[key]}</p>`;
+          }
+        });
+      }
+      getData1();
+  
+      async function getData2() {
+        const data = await fetch('http://ggoreb.com/api/lotto.jsp?drwNo=1');
+        const res = await data.json();
+        for(let key in res) {
+          div.innerHTML += `<p>${res[key]}</p>`;
+        }
+      }
+      getData2();
+  
+    </script>
+  </body>
+  
